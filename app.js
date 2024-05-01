@@ -1,6 +1,7 @@
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import express from "express";
+import cors from 'cors'
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
 import xss from 'xss-clean'
@@ -22,6 +23,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // fro secure Express apps by setting HTTP response headers.
 app.use(helmet());
+app.use(cors());
+
 
 // for adding body to req
 app.use(express.json({ limit: '10kb' }));
